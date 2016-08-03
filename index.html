@@ -1,0 +1,3227 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>AMIS</title>
+    <link href="css/all.css" rel="stylesheet">
+    <link href="css/jquery.mobile-1.3.2.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Login page-->
+    <div data-role="page" id="loginform" class="bg">
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <h4>AMIS</h4>
+        </div>
+
+        <form id="user_login">
+            <div data-role="content" class="loginForm">
+                <h3>Login</h3>
+                <p class="login_err"></p>
+                <input type="text" id="user_name" class="textBox" placeholder="* User ID">
+                <input type="password" id="user_pass" class="textBox" placeholder="* Password">
+                <div class="checkBox" onclick="recipient_select(this)">
+                <input type="checkbox" class="chksign user_select">Remember me</div>
+                <a href="javascript:;" class="continue loginBtn">Sign IN</a> 
+            </div>
+        </form>
+    </div>
+    <!--Login Page ends-->
+    <!--profile  page -->
+    <div data-role="page" data-transition="none" id="profile" class="bg" data-prev="menuList">
+        <!--left menu-->
+        <div data-role="panel" id="profile_list" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#profile_list" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            
+                <li data-role="list-divider">My Profile</li>
+                <li>
+                    <div class="ui-link-inherit">
+                       <img src="" id="profile_img" alt="">
+                       <p id="member_code"></p>
+                       <p id="fname"></p>
+                       <p id="midname"></p>
+                       <p id="surname"></p>
+                       <p id="member_region"></p>
+                       <p id="member_area"></p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- profile page ends-->
+
+    <!--menuList page-->
+    <div data-role="page" data-transition="none" id="menuList" class="bg" data-prev="loginform">
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <h4>Home</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+            <h3>Please choose a category</h3>
+            <div class="circle" id="circle">
+                <div id="eventsBtn" class="draggable" data-value="2">
+                    <img src="images/events.png" alt="">
+                </div>
+                <div id="financeBtn" data-value="1">
+                    <img src="images/finance.png" alt="">
+                </div>
+                <div id="drop" class="droppable drophere">
+                    <span>Drop Here</span>
+                </div>
+                <div id="notifyBtn" data-value="3">
+                    <img src="images/notify.png" alt="">
+                </div>
+                <div id="giftBtn" data-value="4">
+                    <img src="images/usr.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--menuList Page ends-->
+
+    <!--events page-->
+    <div data-role="page" data-transition="none" id="events" class="bg" data-prev="menuList">
+        <!--left menu-->
+        <div data-role="panel" id="event_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+        <a href="#event_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Events</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+        <!---->
+            <a href="#salat_list" class="continue s_time" data-transition="none">Salat Times</a> 
+            <br class="s_time">
+            <a href="#allEvents" class="continue e_all" data-transition="none">All Events</a> 
+            <br class="e_org">
+            <a href="#orgEvents" class="continue e_org" data-transition="none">Organisation Events</a>
+            <br class="e_all">
+            <a href="#nationalEvents" class="continue e_nat" data-transition="none">National Events</a> 
+            <br class="e_nat">
+            <a href="#regionalEvents" class="continue e_reg" data-transition="none">Regional Events</a> 
+            <br class="e_reg">
+            <a href="#localEvents" class="continue e_maj" data-transition="none">Majlis Events</a> 
+            <br class="e_maj">
+            <a href="#invitesEvents" class="continue e_inv" data-transition="none">Invites</a> 
+        </div>
+    </div>
+    <!--events Page ends-->
+
+    <!--salat times-->
+    <div data-role="page" data-transition="none" id="salat_list" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="salat_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#salat_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            
+                <li data-role="list-divider">Salat Times</li>
+                <div data-role="none" id="salat_times">
+
+                </div>
+
+            </ul>
+        </div>
+    </div>
+    <!--salat times ends-->
+
+    <!--organisation Events page-->
+    <div data-role="page" data-transition="none" id="orgEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="allorg_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4><!--username--></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#allorg_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>All</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="org_list_all">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--organisation Events Page ends-->
+
+    <!--organisation page-->
+    <div data-role="page" data-transition="none" id="orgView" class="bg" data-prev="orgEvents">
+        <!--left menu-->
+        <div data-role="panel" id="org-ev-menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+        <a href="#org-ev-menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+            <!--a href="#" class="continue" data-transition="none">Live Event Information</a> 
+            <br-->
+            <a href="javascript:;" class="continue oc-btn" data-transition="none">Organisation Chart</a> 
+            <br>
+            <a href="javascript:;" class="continue oc-docs" data-transition="none">Event Documents</a>
+            <br>
+            <a href="javascript:;" class="continue oc-meetings" data-transition="none">Meetings</a> 
+            <br>
+            <a href="javascript:;" class="continue action_point" data-transition="none">Action Points</a> 
+            <br>
+            <a href="javascript:;" class="continue ap-task" data-transition="none">Tasks</a> 
+            <br>
+            <a href="javascript:;" class="continue oc-finance" data-transition="none">Financial</a> 
+            <br>
+            <a href="javascript:;" class="continue oc-reports" data-transition="none">Reports</a> 
+            <br>
+            <a href="javascript:;" class="continue red-book" data-transition="none">Red Book</a> 
+        </div>
+    </div>
+    <!--Organisation Page Ends-->
+
+    <!--chart-->
+    <div data-role="page" data-transition="none" id="org_chart" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="chart_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#org_chart_tbl" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Table By Level</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#chart_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <section id="inverted-contain">
+              <div class="panzoom-parent">
+                <img class="panzoom" src="" >
+                <div class="zoomInOn"></div>
+                <div class="zoomOutOff"></div>
+              </div>
+            </section>
+        </div>
+    </div>
+    <!--chart ends-->
+
+    <!--table by level-->
+    <div data-role="page" data-transition="none" id="org_chart_tbl" class="bg" data-prev="org_chart">
+        <!--left menu-->
+        <div data-role="panel" id="chart_tbl_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#org_chart" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Org. Chart</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#chart_tbl_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="tbl_by_lvl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--table by level ends-->
+
+    <!--My Action Points-->
+    <div data-role="page" data-transition="none" id="my_ap" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="my_ap_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="javascript:;" class="my_team_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Team AP's</a>
+                    </p>
+                    <p><a href="javascript:;" class="all_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">All AP's</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#my_ap_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My AP's</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="my_ap_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--My Action Points ends-->
+
+    <!--My Team Action Points-->
+    <div data-role="page" data-transition="none" id="my_team_ap" class="bg" data-prev="my_ap">
+        <!--left menu-->
+        <div data-role="panel" id="my_team_ap_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#my_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My AP's</a>
+                    </p>
+                    <p><a href="javascript:;" class="all_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">All AP's</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#my_team_ap_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My Team AP's</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="my_team_ap_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--My Team Action Points ends-->
+
+    <!--All Action Points-->
+    <div data-role="page" data-transition="none" id="all_ap" class="bg" data-prev="my_ap">
+        <!--left menu-->
+        <div data-role="panel" id="all_ap_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#my_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My AP's</a>
+                    </p>
+                    <p><a href="javascript:;" class="my_team_ap" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Team AP's</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#all_ap_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">All AP's</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="all_ap_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--All Action Points ends-->
+
+
+    <!--My Task-->
+    <div data-role="page" data-transition="none" id="my_task" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="my_task_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="javascript:;" class="my_team_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Team Task</a>
+                    </p>
+                    <p><a href="javascript:;" class="all_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">All Task's</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#my_task_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My Task</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="my_task_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--My Task ends-->
+
+    <!--My Team Task-->
+    <div data-role="page" data-transition="none" id="my_team_task" class="bg" data-prev="my_task">
+        <!--left menu-->
+        <div data-role="panel" id="my_team_task_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#my_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Task</a>
+                    </p>
+                    <p><a href="javascript:;" class="all_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">All Task's</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#my_team_task_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My Team Task's</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="my_team_task_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--My Team Task ends-->
+
+    <!--All Task -->
+    <div data-role="page" data-transition="none" id="all_task" class="bg" data-prev="my_task">
+        <!--left menu-->
+        <div data-role="panel" id="all_task_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#my_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Task</a>
+                    </p>
+                    <p><a href="javascript:;" class="my_team_task" data-transition="none">
+                        <img src="images/list_icon.png" alt="">My Team Task</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#all_task_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">All Task's</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="all_task_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--All Task's ends-->
+
+    <!--All Task -->
+    <div data-role="page" data-transition="none" id="red_book" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="red_book_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#red_book_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h6 class="org-ev-title"></h6>
+            <h6 class="org-ev-tym"></h6>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">Red Book</li>
+            </ul>
+            <table class="ui-responsive ui-body-d ui-shadow table-stripe table-stroke ui-table ui-table-reflow">
+                <tbody class="red_book_tbl"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--All Task's ends-->
+
+    <!--Meetings page-->
+    <div data-role="page" data-transition="none" id="meetings-list" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="ml_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4><!--username--></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#ml_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>All</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="meetings_list_all">Meetings List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--Meetings Page ends-->
+
+    <!--Meetings Details page-->
+    <div data-role="page" data-transition="none" id="meetings_details" class="bg" data-prev="meetings-list">
+        <!--left menu-->
+        <div data-role="panel" id="meetings_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#meetings_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Meetings</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="meetings_title">Meetings details</li>
+                <li><div class="ui-link-inherit" id="details_meetings"><!--append meetings details--></div></li>
+            </ul>
+        </div>
+    </div>
+    <!--Meetings details Page ends-->
+
+    <!--Task page-->
+    <div data-role="page" data-transition="none" id="task-list" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="tl_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#tl_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>All</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="task_list_all">Task List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--Task Page ends-->
+
+    <!--Task Details page-->
+    <div data-role="page" data-transition="none" id="task_details" class="bg" data-prev="task-list">
+        <!--left menu-->
+        <div data-role="panel" id="task_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#task_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Task</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="task_title">Task details</li>
+                <li><div class="ui-link-inherit" id="details_task"><!--append Task details--></div></li>
+            </ul>
+        </div>
+    </div>
+    <!--Task details Page ends-->
+
+    <!--events finance page-->
+    <div data-role="page" data-transition="none" id="financial-list" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="fl_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p><a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p><a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p><a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#fl_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Financial</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="financial_list_int">Internal</li>
+            </ul>
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="financial_list_ext">External</li>
+            </ul>
+        </div>
+    </div>
+    <!--events finance Page ends-->
+
+    <!--events finance Details page-->
+    <div data-role="page" data-transition="none" id="financial_details" class="bg" data-prev="financial-list">
+        <!--left menu-->
+        <div data-role="panel" id="financial_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage"><img src="" alt=""></div>
+                    <br/>
+                    <div class="profileName"><h4></h4></div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#financial_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Financial</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="task_title">Financial details</li>
+                <li><div class="ui-link-inherit" id="details_financial"><!--append Task details--></div></li>
+            </ul>
+        </div>
+    </div>
+    <!--events finance details Page ends-->
+
+    <!--event reports page-->
+    <div data-role="page" data-transition="none" id="event_reports" class="bg" data-prev="orgView">
+        <!--left menu-->
+        <div data-role="panel" id="reports_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#reports_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Reports</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+            <select name="select-native-1" id="opt_meeting"><option value=""></option></select>
+            <br>
+            <a href="javascript:;" class="continue report_btn" data-transition="none" data-typ="1">Minutes Only</a> 
+            <br class="">
+            <a href="javascript:;" class="continue report_btn" data-transition="none" data-typ="2">Minutes & Attendance</a> 
+            <br class="">
+            <a href="javascript:;" class="continue report_btn" data-transition="none" data-typ="3">Attendance Only</a>
+        </div>
+    </div>
+    <!--event reports Page ends-->
+
+    <!--All Events page-->
+    <div data-role="page" data-transition="none" id="allEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="allevent_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#allevent_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>All</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="list_all">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--All Events Page ends-->
+
+    <!--Local Events page-->
+    <div data-role="page" data-transition="none" id="localEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="localevent_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                            <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#localevent_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Majlis</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="list_local">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--Local Events Page ends-->
+
+    <!--Regional Events page-->
+    <div data-role="page" data-transition="none" id="regionalEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="regional_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#regional_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Regional</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="list_regional">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--Regional Events Page ends-->
+
+    <!--National Events page-->
+    <div data-role="page" data-transition="none" id="nationalEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="national_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#national_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>National</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="list_national">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--National Events Page ends-->
+
+    <!--invites Events page-->
+    <div data-role="page" data-transition="none" id="invitesEvents" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="invites_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#invites_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Invites</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="list_invites">Events List</li>
+                <!--append list-->
+            </ul>
+        </div>
+    </div>
+    <!--Invites Events Page ends-->
+
+    <!--Events Details page-->
+    <div data-role="page" data-transition="none" id="events_details" class="bg" data-prev="events">
+        <!--left menu-->
+        <div data-role="panel" id="event_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#events" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Events</a>
+                    </p>
+                    <p class="s_time">
+                        <a href="#salat_list" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Salat Times</a>
+                    </p>
+                    <p class="e_all">
+                        <a href="#allEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">All Events</a>
+                    </p>
+                    <p class="e_nat">
+                        <a href="#nationalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">National Events</a>
+                    </p>
+                    <p class="e_reg">
+                        <a href="#regionalEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Regional Events</a>
+                    </p>
+                    <p class="e_maj">
+                        <a href="#localEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Majlis Events</a>
+                    </p>
+                    <p class="e_inv">
+                        <a href="#invitesEvents" data-transition="none">
+                            <img src="images/list_icon.png" alt="">Invites</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#event_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Events</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" id="event_title">Event details</li>
+                <li><div class="ui-link-inherit" id="details_event"><!--append event details--></div></li>
+            </ul>
+        </div>
+    </div>
+    <!--Events details Page ends-->
+
+    <!--finance page-->
+    <div data-role="page" data-transition="none" id="finance" class="bg" data-prev="menuList">
+        <!--left menu-->
+        <div data-role="panel" id="finance_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#finance_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+            <select name="select-native-1" id="fin_year">
+                <!--year details-->
+            </select>
+            <br>
+            <a href="javascript:;" class="continue budget" data-transition="none" onclick="get_budget()">My Budget</a> 
+            <br class="budget">
+            <a href="javascript:;" class="continue promise" data-transition="none" onclick="get_promise()">My Promises</a> 
+            <br class="promise">
+            <a href="javascript:;" class="continue statement" data-transition="none" onclick="statement_lists()">My Statement</a>
+            <br class="statement">
+            <a href="javascript:;" class="continue statistics" data-transition="none" onclick="get_statistics()">Statistics</a>
+        </div>
+    </div>
+    <!--finance Page ends-->
+
+    <!--my budget page-->
+    <div data-role="page" data-transition="none" id="my_budget" class="bg" data-prev="finance">
+        <!--left menu-->
+        <div data-role="panel" id="budget_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#budget_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" >My Budget</li>
+                <!--budget details goes here-->
+                <span data-role="none" id="det_budget"></span>
+                <li>
+                    <div class="ui-link-inherit">
+                        <div class="ui-grid-solo">
+                            <div class="ui-block-a">Total Budget Deficit (2014): £<span id="bud_tot"></span></div>
+                        </div><!-- /grid-solo -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--My budget Page ends-->
+
+    <!--my promises page-->
+    <div data-role="page" data-transition="none" id="my_promise" class="bg" data-prev="finance">
+        <!--left menu-->
+        <div data-role="panel" id="promise_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#promise_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My Promises</li>
+                <!--promise details goes here-->
+                <span data-role="none" id="det_promise"></span>
+                <li>
+                    <div class="ui-link-inherit">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">Total Promise(‘s) Deficit (2014): £<span id="pro_tot"></span></div>
+                        </div><!-- /grid-a -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--My promises Page ends-->
+
+    <!--My Statement page-->
+    <div data-role="page" data-transition="none" id="my_statement" class="bg" data-prev="finance">
+        <!--left menu-->
+        <div data-role="panel" id="statement_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#statement_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">My Statement</li>
+                <!--statement lists-->
+                <span data-role="none" id="statement_list"></span>
+            </ul>
+        </div>
+    </div>
+    <!--My Statement Page ends-->
+
+    <!--my Statement Details page-->
+    <div data-role="page" data-transition="none" id="my_statement_details" class="bg" data-prev="my_statement">
+        <!--left menu-->
+        <div data-role="panel" id="sm_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#sm_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider">Statement Details</li>
+                <li>
+                    <div class="ui-link-inherit" id="statement_details">
+                        <!--statement details-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--My statement details Page ends-->
+
+    <!--My Statistics page-->
+    <div data-role="page" data-transition="none" id="my_statistics" class="bg" data-prev="finance">
+        <!--left menu-->
+        <div data-role="panel" id="stat_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#finance" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Finance</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#stat_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>Finance</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+                <li data-role="list-divider" >MONETARY BY BUDGET</li>
+                <!--statistics details goes here-->
+                <span data-role="none" id="det_statistics"></span>
+            </ul>
+        </div>
+    </div>
+    <!--My Statistics Page ends-->
+
+    <!--notifications page-->
+    <div data-role="page" data-transition="none" id="notify" class="bg" data-prev="menuList">
+        <!--left menu-->
+        <div data-role="panel" id="notify_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#notify_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+            <!--a href="javascript:;" class="continue">SMS</a> 
+            <br-->
+            <a href="#list_menu" class="continue" data-transition="none">E-Mail</a> 
+            <br>
+            <a href="#contacts_menu" class="continue" data-transition="none">Tabligh Contacts</a> 
+            <br>
+            <a href="#message_centre" class="continue" data-transition="none">Message Centre</a>  
+        </div>
+    </div>
+    <!--notifications Page ends-->
+
+    <!--contacts menu page-->
+    <div data-role="page" data-transition="none" id="contacts_menu" class="bg" data-prev="notify">
+        <!--left menu-->
+        <div data-role="panel" id="con_list" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#con_list" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+        <br><br>
+            <a href="#con_cr" class="continue tc_create">Create</a> 
+            <br class="tc_create">
+            <a href="javascript:;" class="continue tc_draft" data-transition="none" onclick="condraft_list()">Draft</a> 
+            <br class="tc_draft">
+            <a href="javascript:;" class="continue tc_history" data-transition="none" onclick="conhistory_list()">History</a>
+        </div>
+    </div>
+    <!--contacts menu Page ends-->
+
+    <!-- create contact Page here -->
+    <div data-role="page" id="con_cr" class="bg" data-transition="none" data-prev="contacts_menu">
+        <!--left menu-->
+        <div data-role="panel" id="con_cr_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" id="tabligh_header" data-tap-toggle="false">
+            <a href="#con_cr_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content">
+            <h3>Create</h3>
+            <form id="con_cr_form">
+            <p class="con_cr_err"></p>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_fname" placeholder="First Name *" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_mname" placeholder="Middle Name"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_sname" placeholder="Surname *"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_mobile" placeholder="Mobile *" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_mail" placeholder="Primary Email *"/>
+                </div>
+                
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_flat" placeholder="House / Flat No"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_house" placeholder="House Name"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_street" placeholder="Street"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_locality" placeholder="Locality"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_town" placeholder="Town"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox cr_pin" placeholder="Post Code"/>
+                </div>
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                    <a href="javascript:;" class="continue" onclick="contact_create(2)">Draft</a>  
+                    </div>
+                    <div class="ui-block-b">
+                    <a href="javascript:;" class="continue" onclick="contact_create(1)">Save</a>  
+                    </div>
+                </div>
+
+            </form>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+        </div>
+    </div>
+    <!-- create contact Page ends here -->
+    
+    <!--Contact draft List page-->
+    <div data-role="page" data-transition="none" id="con_draft_list" class="bg" data-prev="contacts_menu">
+        <!--left menu-->
+        <div data-role="panel" id="cnmenu_draft" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#cnmenu_draft" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" >Tabligh Contacts - Draft</li>
+            <div data-role="none" id="con_draft_res">
+                <!--pending list goes here-->    
+            </div>
+            
+            </ul>
+        </div>
+    </div>
+    <!--contact draft List ends-->
+
+    <!-- draft contact details Page -->
+    <div data-role="page" id="con_draft_det" class="bg" data-transition="none" data-prev="contacts_menu">
+        <!--left menu-->
+        <div data-role="panel" id="con_dr_det" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#con_dr_det" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content">
+            <h3>Draft</h3>
+            <form >
+            <p class="con_dr_err"></p>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_fname" placeholder="First Name *" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_mname" placeholder="Middle Name" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_sname" placeholder="Surname *"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_mobile" placeholder="Mobile *" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_mail" placeholder="Primary Email *"/>
+                </div>
+                
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_flat" placeholder="House / Flat No"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_house" placeholder="House Name"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_street" placeholder="Street"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_locality" placeholder="Locality"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_town" placeholder="Town"/>
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox dr_pin" placeholder="Post Code"/>
+                </div>
+                <input type="hidden" class="dr_id" />
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                    <a href="javascript:;" class="continue" onclick="contact_update(2)">Draft</a>  
+                    </div>
+                    <div class="ui-block-b">
+                    <a href="javascript:;" class="continue" onclick="contact_update(1)">Save</a>  
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!-- draft contact details ends here -->
+
+    <!--Contact History List page-->
+    <div data-role="page" data-transition="none" id="con_history_list" class="bg" data-prev="contacts_menu">
+        <!--left menu-->
+        <div data-role="panel" id="cnmenu_history" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#cnmenu_history" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" >Tabligh Contacts - History</li>
+            <div data-role="none" id="con_history_res">
+                <!--list goes here-->    
+            </div>
+            
+            </ul>
+        </div>
+    </div>
+    <!--contact History List ends-->
+
+    <!--contact history details-->
+    <div data-role="page" data-transition="none" id="conhis_details" class="bg" data-prev="contacts_menu">
+        <!--left menu-->
+        <div data-role="panel" id="conhis_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#conhis_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            
+                <li data-role="list-divider">History Details</li>
+                <li>
+                    <div class="ui-link-inherit" id="con_his_det">
+                        <!--pending details-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--contact history details ends-->
+
+    <!--message centre page-->
+    <div data-role="page" data-transition="none" id="message_centre" class="bg" data-prev="notify">
+        <!--left menu-->
+        <div data-role="panel" id="centre_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#centre_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+            <h3>Message Centre</h3>
+            <br>
+            <a href="#con_pen_list" class="continue mc_con" data-transition="none">Contact Status</a> 
+            <br class="mc_con">
+            <a href="#cheque_list" class="continue mc_chq" data-transition="none">Cheque Status</a> 
+            <br class="mc_chq">
+            <a href="#membership_list" class="continue mc_mem" data-transition="none">Membership</a> 
+            <br class="mc_mem">
+            <a href="#org_pen_list" class="continue mc_org" data-transition="none">Organisation</a> 
+            <br class="mc_org">
+            <a href="#pos_pen_list" class="continue mc_pos" data-transition="none">Position Status</a> 
+            <br class="mc_pos">
+            <a href="#sms_alert_list" class="continue mc_sms" data-transition="none">SMS Alerts</a>  
+        </div>
+    </div>
+    <!--message centre ends-->
+
+    <!--Cheque Pending List page-->
+    <div data-role="page" data-transition="none" id="cheque_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="cheque_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#cheque_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="cheque_sts">Cheque Status</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--Cheque Pending List ends-->
+
+    <!--Contact Status Pending List page-->
+    <div data-role="page" data-transition="none" id="con_pen_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="con_pen_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#con_pen_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="cont_pen">Contact Status</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--Contact status Pending List ends-->
+
+    <!--Membership Pending List page-->
+    <div data-role="page" data-transition="none" id="membership_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="pending_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#pending_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="membership">Membership Status</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--Membership Pending List ends-->
+
+    <!--organisation Status Pending List page-->
+    <div data-role="page" data-transition="none" id="org_pen_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="org_pen_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#org_pen_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="org_pen">Organisation Status</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--organisation status Pending List ends-->
+
+    <!--Position Status Pending List page-->
+    <div data-role="page" data-transition="none" id="pos_pen_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="pos_pen_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#pos_pen_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="pos_pen">Position Status</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--position status Pending List ends-->
+
+    <!--SMS Alert List page-->
+    <div data-role="page" data-transition="none" id="sms_alert_list" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="sms_alert_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#sms_alert_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="sms_alert">SMS Alert</li>
+            <!--pending list goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--SMS Alert List ends-->
+
+    <!--Pending Details page-->
+    <div data-role="page" data-transition="none" id="pending_details" class="bg" data-prev="message_centre">
+        <!--left menu-->
+        <div data-role="panel" id="pending_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#pending_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            
+                <li data-role="list-divider" id="pen_title">Pending</li>
+                <li>
+                    <div class="ui-link-inherit" id="pending_approval">
+                        <!--pending details-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Pending details Page ends-->
+
+    <!--mail menu page-->
+    <div data-role="page" data-transition="none" id="list_menu" class="bg" data-prev="notify">
+        <!--left menu-->
+        <div data-role="panel" id="menu_list" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#menu_list" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>E-mail</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+            <br><br>
+            <a href="#member_search" class="continue compose mail_new" data-transition="none">Compose</a> 
+            <br class="mail_new"><br class="mail_new">
+            <a href="#mail_list" class="continue mail_box" data-transition="none">Inbox</a>   
+        </div>
+    </div>
+    <!--mail menu Page ends-->
+
+    <!--Mail List page-->
+    <div data-role="page" data-transition="none" id="mail_list" class="bg" data-prev="list_menu">
+        <!--left menu-->
+        <div data-role="panel" id="mail_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#mail_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>E-mail</h4>
+        </div>
+
+        <div data-role="content" class="eventlist">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            <li data-role="list-divider" id="email_inbox">Inbox</li>
+                <!--inbox details goes here-->
+            </ul>
+        </div>
+    </div>
+    <!--Mail List ends-->
+
+    <!--Mail Details page-->
+    <div data-role="page" data-transition="none" id="mail_details" class="bg" data-prev="list_menu">
+        <!--left menu-->
+        <div data-role="panel" id="mail_det_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p class="mail_box">
+                        <a href="#mail_ist" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Inbox</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#mail_det_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist">
+        <h3 class="ui-bar ui-corner-all inbox_head">E-Mail - Inbox</h3>
+            <div class="ui-body ui-corner-all ui-shadow" id="message_details" style="color:#fff; text-shadow:none; text-align:left;">
+            <!--mail details goes here-->
+            </div>
+            <br>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#member_search" class="continue fwd_msg" data-transition="none">Forward</a> 
+                </div>
+                <div class="ui-block-b">
+                    <a href="#reply_mail" class="continue rep_msg" data-transition="none">Reply</a>  
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Mail details Page ends-->
+
+    <!--Member search  page -->
+    <div data-role="page" data-transition="none" id="member_search" class="bg" data-prev="list_menu">
+        <!--left menu-->
+        <div data-role="panel" id="recip_search" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="slide">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav search-nav">
+        <a href="#recip_search" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="loginForm">
+            <h3>Recipients Search</h3>
+            <p class="search_err"></p>
+            <select name="select-native-1" id="select-native-1" onchange="area(this.value)">
+                <option value="">* Region</option>
+            </select>
+            &nbsp;
+            <select name="select-native-2" id="select-native-2">
+                <option value="">* Majlis</option>
+            </select>
+            <br/>
+            <input type="text" id="sur_name" class="textBox" placeholder="* Surname">
+            <a href="javascript:;" class="continue" onclick="member_search()">Search</a> 
+        </div>
+    </div>
+    <!-- Member search page ends-->
+
+    <!--Recipients  page -->
+    <div data-role="page" data-transition="none" id="member_list" class="bg" data-prev="list_menu">
+        <!--left menu-->
+        <div data-role="panel" id="recip_list" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="slide">
+                            <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-tap-toggle="false"> 
+        <a href="#recip_list" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content" class="eventlist" id="">
+            <ul data-role="listview" data-inset="true" data-icon="false">
+            
+                <li data-role="list-divider">Recipients</li>
+                <div id="recipients" data-role="none">
+                       <!--recipients lists-->
+                    </div>
+            </ul>
+            <a href="javascript:;" class="continue" onclick="recipients()">Continue</a>
+        </div>
+    </div>
+    <!-- Recipients page ends-->
+
+    <!-- Reply / Forward Page starts here -->
+    <div data-role="page" id="reply_mail" class="bg" data-transition="none" data-prev="list_menu">
+        <!--left menu-->
+        <div data-role="panel" id="send_menu" class="bg" data-position="left" data-display="overlay">
+            <div data-role="header" class="topNav">
+                <h4>AMIS</h4>
+                <img src="images/close1.png" alt="" class="close" data-rel="close">
+            </div>
+            <div data-role="content">
+                <div class="profileDetails">
+                    <div class="profileImage">
+                        <img src="" alt="">
+                    </div>
+                    <br/>
+                    <div class="profileName">
+                        <h4><!--username--></h4>
+                    </div>
+                </div>
+                <div class="profileFeatures">
+                    <p>
+                        <a href="#menuList" data-transition="none">
+                        <img src="images/home.png" alt="">Home</a>
+                    </p>
+                    <p>
+                        <a href="#notify" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Notifications</a>
+                    </p>
+                    <p>
+                        <a href="#list_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">E-Mail</a>
+                    </p>
+                    <p>
+                        <a href="#message_centre" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Message Centre</a>
+                    </p>
+                    <p>
+                        <a href="#contacts_menu" data-transition="none">
+                        <img src="images/list_icon.png" alt="">Tabligh Contacts</a>
+                    </p>
+                    <p>
+                        <a href="#profile" data-transition="none">
+                        <img src="images/user_icon.png" alt="">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left menu ends-->
+        <div data-role="header" class="topNav" data-position="fixed" data-tap-toggle="false">
+            <a href="#send_menu" data-role="none" ><img class="menu_bar" src="images/menu.png"></a>
+            <h4>AMIS</h4>
+        </div>
+        <div data-role="content">
+            <h3 id="msg_title"><!--msg title--></h3>
+            <form >
+            <p class="reply_err"></p>
+            <input type="hidden" id="reply_id">
+            <input type="hidden" id="msg_typ">
+                <div data-role="fieldcontain" class="textarea">
+                    <input type="text" class="textBox" placeholder="subject *" id="mail_sub" />
+                </div>
+                <div data-role="fieldcontain" class="textarea">
+                    <textarea class="textarea1" placeholder="Message *" id="message"></textarea>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                    <a href="#mail_list" class="continue" data-transition="none">Cancel</a> 
+                    </div>
+                    <div class="ui-block-b">
+                    <a href="javascript:;" class="continue" onclick="send_mail()">Send</a>  
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!-- reply/forward Page ends here -->
+
+<div class="ajaxOverlay"><div id="fountainTextG">
+<div id="fountainTextG_1" class="fountainTextG">L</div><div id="fountainTextG_2" class="fountainTextG">o</div>
+<div id="fountainTextG_3" class="fountainTextG">a</div><div id="fountainTextG_4" class="fountainTextG">d</div>
+<div id="fountainTextG_5" class="fountainTextG">i</div><div id="fountainTextG_6" class="fountainTextG">n</div>
+<div id="fountainTextG_7" class="fountainTextG">g</div><div id="fountainTextG_8" class="fountainTextG">.</div>
+<div id="fountainTextG_9" class="fountainTextG">.</div><div id="fountainTextG_10" class="fountainTextG">.</div>
+</div></div>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.panzoom.js" type="text/javascript"></script>
+<script src="js/jquery.mobile-1.3.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="phonegap.js" type="text/javascript"></script>
+<script src="js/fastclick.js" type="text/javascript"></script>
+<script src="js/prayTime.js" type="text/javascript"></script>
+<script src="js/all.js" type="text/javascript"></script>
+</body>
+</html>
