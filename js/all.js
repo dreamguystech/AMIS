@@ -1763,7 +1763,7 @@ function downloadFile(URL) {
         }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
         var rootdir = fileSystem.root;
         var fp = fileSystem.root.toURL(); // Returns Fullpath of local directory
-        fp = fp + "/" + folderName + "/" + fileName; // fullpath and name of the file which we want to give
+        fp = fp + "/" + fileName; // fullpath and name of the file which we want to give
         // download function call
         filetransfer(download_link, fp);
     }
