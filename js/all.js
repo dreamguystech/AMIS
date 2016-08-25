@@ -1746,7 +1746,7 @@ $(document).on('click','.red-book',function(){
     });
 });
 
-var folderName = 'event documents';
+var folderName = 'amis';
 var fileName;
 
 function downloadFile(URL) {
