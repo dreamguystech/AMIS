@@ -1803,6 +1803,12 @@ function filetransfer(download_link, fp) {
             disableBack = false;
             //alert("download error source " + error.source);
             navigator.notification.alert("Download error source " + error.source, null, 'Error!', 'OK');
+        },
+		false,
+    {
+        headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
         }
+    }
     );
 }
