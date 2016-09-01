@@ -1313,6 +1313,38 @@ $(document).on('click','.oc-btn',function(){
     });
 });
 
+$(document).on('click','.oc-chbtn',function(){
+    var event_id = window.localStorage.getItem("oe_id");
+    var dataString = "event_id="+event_id;
+    $.ajax({
+        url:'http://amisapp.ansarullah.co.uk/mobile_app/get_child_chart',
+        type:'POST',
+        data:dataString,
+        dataType:'json',
+        beforeSend:function(){
+            $('.panzoom').attr('src','');
+            $('.tbl_by_lvl').html('');
+            $('.ajaxOverlay').show();
+            disableBack = true;
+        },
+        success:function(res){
+			$("#inverted-containch").empty();
+			for(var i=0;i<res.chart.length;i++){
+				$("#inverted-containch").append('<div class="panzoom-parent"><img class="panzoom" src="'+res.chart[i]+'" ><div class="zoomInOn"></div>                <div class="zoomOutOff"></div></div><br />');
+			}
+           // $('.panzoom').attr('src',res.chart);
+            $('.tbl_by_lvl').html(res.level);
+            setTimeout(function () {
+                $('.ajaxOverlay').hide();
+                disableBack = false;
+                $.mobile.changePage("#child_chart", {
+                    transition: "none"
+                });
+            },2000);     
+        }
+    });
+});
+
 (function() {
     var $section = $('#inverted-contain');
     $section.find('.panzoom').panzoom({
@@ -1325,6 +1357,19 @@ $(document).on('click','.oc-btn',function(){
     contain: 'invert'
     }).panzoom('zoom');
 })();
+
+$(document).on('click','.zoomInOn',function(){
+	var $section = $(this).parent();
+    $section.find('.panzoom').panzoom({
+    $zoomIn: $section.find(".zoomInOn"),
+    $zoomOut: $section.find(".zoomOutOff"),
+    $reset: $section.find(".reset"),
+    startTransform: 'scale(1.1)',
+    increment: 0.1,
+    minScale: 1,
+    contain: 'invert'
+    }).panzoom('zoom');
+});
 
 $(document).on('click','.oc-docs',function(){
     var event_id = window.localStorage.getItem("oe_id");
@@ -1746,7 +1791,7 @@ $(document).on('click','.red-book',function(){
     });
 });
 
-var folderName = 'amis';
+var folderName = 'event documents';
 var fileName;
 
 function downloadFile(URL) {
@@ -1763,7 +1808,7 @@ function downloadFile(URL) {
         }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
         var rootdir = fileSystem.root;
         var fp = fileSystem.root.toURL(); // Returns Fullpath of local directory
-        fp = fp + "/" + fileName; // fullpath and name of the file which we want to give
+        fp = fp + "/" + folderName + "/" + fileName; // fullpath and name of the file which we want to give
         // download function call
         filetransfer(download_link, fp);
     }
@@ -1803,12 +1848,6 @@ function filetransfer(download_link, fp) {
             disableBack = false;
             //alert("download error source " + error.source);
             navigator.notification.alert("Download error source " + error.source, null, 'Error!', 'OK');
-        },
-		false,
-    {
-        headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
         }
-    }
     );
 }

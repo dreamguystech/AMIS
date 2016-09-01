@@ -921,7 +921,7 @@ color:#FFFFFF;
 }
 
 .panzoom {max-width: none !important;}
-.panzoom-parent { border: 2px solid #333; background: #fff;}
+.panzoom-parent { border: 2px solid #333; background: #fff; position:relative;}
 .zoomInOn,.zoomInOff,.zoomOutOn,.zoomOutOff,.closeButton{
 width:34px;height:34px;display:block;
 position:absolute;-webkit-user-select:none;
@@ -929,6 +929,6 @@ position:absolute;-webkit-user-select:none;
 user-select:none}
 .zoomInOn,.zoomInOff{background-image:url(../images/zoom_in.png);top:10px;right:10px}
 .zoomOutOn,.zoomOutOff{background-image:url(../images/zoom_out.png);top:52px;right:10px}
-.zoomInOn,.zoomOutOn{opacity:1;cursor:pointer}
+.zoomInOn,.zoomOutOn{opacity:1;cursor:pointer;position:absolute;}
 .zoomInOff,.zoomOutOff{opacity:1;cursor:pointer}
-#inverted-contain{ width: 100%; height: auto; }
+#inverted-contain, #inverted-containch{ width: 100%; height: auto; }
