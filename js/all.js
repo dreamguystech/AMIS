@@ -1329,8 +1329,12 @@ $(document).on('click','.oc-chbtn',function(){
         },
         success:function(res){
 			$("#inverted-containch").empty();
+			if(res.chart){
 			for(var i=0;i<res.chart.length;i++){
 				$("#inverted-containch").append('<div class="panzoom-parent"><img class="panzoom" src="'+res.chart[i]+'" ><div class="zoomInOn"></div>                <div class="zoomOutOff"></div></div><br />');
+			}
+			}else{
+				$("#inverted-containch").append('<div>No Child Charts</div>');
 			}
            // $('.panzoom').attr('src',res.chart);
             $('.tbl_by_lvl').html(res.level);
