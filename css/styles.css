@@ -441,7 +441,7 @@ a {
   height: 49px;
   padding: 12px;
   border-radius: 1px;
-  background-color: #fd4c58;
+  background-color: #3898ec;
   color: white;
   font-size: 12px;
   line-height: 26px;
@@ -471,7 +471,7 @@ a {
   line-height: 36px;
 }
 .label-form.light {
-  color: rgba(255, 255, 255, 0.34);
+  color: rgba(181, 181, 181, 0.84);
 }
 .input-form {
   display: inline-block;
@@ -521,8 +521,8 @@ a {
 }
 .input-form.light {
   border-bottom-width: 1px;
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  color: white;
+  border-bottom-color: rgba(181, 181, 181, 0.84);
+  color: #000;
 }
 .input-form.textarea {
   height: 80px;
@@ -536,6 +536,9 @@ a {
 }
 .separator-fields {
   height: 8px;
+  width:100%;
+  float:left;
+  
 }
 .right-input-link {
   position: absolute;
@@ -701,9 +704,9 @@ a {
   opacity: 0;
 }
 .page-content.bg-gradient {
-  background-color: #1f2532;
-  background-image: -webkit-linear-gradient(107deg, #4c68b1, black 98%);
-  background-image: linear-gradient(343deg, #4c68b1, black 98%);
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(107deg, #fff, #fff 98%);
+  background-image: linear-gradient(343deg, #fff, #fff 98%);
 }
 .loading-icon {
   position: absolute;
@@ -769,9 +772,9 @@ a {
   background-color: whitesmoke;
 }
 .group-block {
-  width: 50%;
+  width: 49%;
   padding-top: 10px;
-  padding-right: 4px;
+  margin-right: 5px;
   float: left;
 }
 .group-block.last {
@@ -847,7 +850,7 @@ a {
   background-size: cover;
 }
 .text-new {
-  padding: 20px;
+  padding: 20px 10px;
   border: 1px solid #e6e6e6;
   background-color: white;
 }
@@ -1625,3 +1628,30 @@ input[type=text]:focus, textarea:focus {
 .small-button.icon-only.grey.right.last{
   margin-left: 0;
 }
+
+.error {border-bottom:1px solid #F00 !important;}
+.righticon {color: #fff;
+    float: right;
+    margin-right: 4px;
+    margin-top: 5px;
+    text-align: center;
+    width: 35px; position:relative}
+	
+.righticon div {border: 1px solid;
+    border-radius: 56%;
+    font-size: 30px;
+    height: 35px;
+    width: 35px;}
+.shadow {border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.34);}
+	
+.shadow a{padding:10px;}
+
+.icon-outer { border: 1px solid;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 30px;
+    height: 40px;
+    padding: 4px;
+    width: 40px;}
