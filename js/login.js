@@ -9,26 +9,6 @@ $(document).ready(function(){
 		$('#login-form').submit(function(){ 
 				if(validateEmailUsername() & validateLpassword() )
 				{
-					/*$(".loading-mask").css('opacity','0.5');
-					$.post(base_url+"ajaxlogin", 
-                        $('#login-form').serialize(),
-                        function(data){	
-							$(".loading-mask").css('opacity','0');
-							if(data.success == "success")
-							{
-								//location.href = base_url;
-							}else
-							{
-								$('#password').addClass("error");
-								$('#email').addClass("error");	
-								$("#submit").show();
-							}
-                        }, 
-                        "json"
-                    );
-					return false;*/
-					
-					
         androidToken = window.localStorage.getItem("androidToken");
         iosToken = window.localStorage.getItem("iosToken");
         var dataString ="uname="+$("#email").val()+"&pass="+$("#password").val()+"&android="+androidToken+"&ios="+iosToken;
@@ -51,6 +31,9 @@ $(document).ready(function(){
                         window.localStorage.removeItem('stay_signed');
                     }*/
                     //set item
+					var pro_img = '<img src="http://amisapp.ansarullah.co.uk/images/member/'+data.det.prof_img+'" />';
+					if(data.det.prof_img == "user.png")
+					var pro_img  = '<i class="navbar-button-icon icon ion-ios-person-outline" style="font-size: 30px; height: 35px; width: 35px; display: inline;"></i>';
                     window.localStorage.setItem("member_id", data.det.m_id);
                     window.localStorage.setItem("user_id", data.det.u_id);
                     window.localStorage.setItem("first_name", data.det.fname);
@@ -59,7 +42,7 @@ $(document).ready(function(){
                     window.localStorage.setItem("member_code", data.det.m_code);
                     window.localStorage.setItem("region", data.det.region);
                     window.localStorage.setItem("area", data.det.area);
-                    window.localStorage.setItem("prof_img", data.det.prof_img);
+                    window.localStorage.setItem("prof_img", pro_img);
                     window.localStorage.setItem("latitude", data.det.latitude);
                     window.localStorage.setItem("longitude", data.det.longitude);
 
