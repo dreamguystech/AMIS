@@ -32,10 +32,10 @@
     </script>
 
   </head>
-  <body >
+  <body id="myBodyId">
     <h1>Test Zoom</h1><br /><br />
     
-    <div id="my_div" style="width:200px; height:170px;"><img src="http://amisapp.ansarullah.co.uk/images/chart_images/chart_image_1472831051.png" ></div>
+    <div id="myDiv1" style="width:200px; height:170px;"><img src="http://amisapp.ansarullah.co.uk/images/chart_images/chart_image_1472831051.png" ></div>
   <script src="js/webfont.js"></script>
   <script>
     WebFont.load({
@@ -48,12 +48,86 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/framework.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
-  <script type="text/javascript" src="js/jquery.touchy.js"></script>
+ <!-- <script type="text/javascript" src="js/jquery.touchy.js"></script>-->
   <script type="text/javascript" src="js/prayTime.js"></script>
   <script type="text/javascript" src="js/events-view.js"></script>
   <script>
   //alert(window.localStorage.getItem("user_id"));
   </script>
+  
+  <script type="text/javascript">
+
+
+window.onload = function(){
+
+//Global Variables
+document.myStartDist = 0
+document.myScale = 1.1
+document.myOnlyZoomLarger = 'true'    // if true page only can zoom larger, false allows page to shrink 
+
+document.getElementById('myDiv1').style.WebkitTransformOrigin = '0px 0px';
+
+
+
+
+// basic touch events
+
+
+ myBodyId.ontouchstart = function(event){
+    myFinger0 = event.touches[0]
+    myFinger1 = event.touches[1]
+    document.myStartDist = parseInt(myFinger0.clientX)  - parseInt(myFinger1.clientX)    
+ }
+
+
+
+  myBodyId.ontouchmove = function(event){
+   
+   if (event.touches.length == 2){     // check if only two fingers on the device
+    
+    myFinger0 = event.touches[0]
+    myFinger1 = event.touches[1]
+    myNewWidth = parseInt(myFinger0.clientX) - parseInt(myFinger1.clientX)   
+    myChangeX =  myNewWidth / document.myStartDist  
+    document.myScale = myChangeX
+    
+    
+    
+    // the following is less confusing than normal javascript if statements
+    
+    if (document.myOnlyZoomLarger == 'false'){
+      if (document.myScale < 0.05){    // so web page does not fully disapear
+          document.myScale = 0.05
+      } 
+      document.getElementById('myDiv1').style.webkitTransform = 'scale('+document.myScale+')';
+    }  
+    
+    
+    if (document.myOnlyZoomLarger == 'true'){
+      if (document.myScale < 1){    //  resets webpage to original size
+          document.myScale = 1.0
+          document.getElementById('myDiv1').style.webkitTransform = 'scale(1.0)';
+      } else {
+        document.getElementById('myDiv1').style.webkitTransform = 'scale('+document.myScale+')';
+      }
+    }
+          
+        
+
+   } // end touches   
+    
+  }  // end ontouchmove
+
+
+
+
+
+
+
+
+
+}
+</script>
   <!--[if lte IE 9]><script src="js/placeholders.min.js"></script><![endif]-->
 </body>
 </html>
