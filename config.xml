@@ -20,7 +20,7 @@
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="stay-in-webview" value="false" />
@@ -34,7 +34,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="show-splash-screen-spinner" value="false" />
     <preference name="load-url-timeout" value="40000" />
-    <preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />
+    <!--<preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />-->
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 	
     <plugin name="org.apache.cordova.network-information" source="pgb" />
