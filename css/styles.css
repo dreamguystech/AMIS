@@ -264,7 +264,9 @@ a {
   line-height: 60px;
 }
 .highlighted {
-  color: #c2c2c2;
+  /*color: #c2c2c2;*/
+  padding-left:5px;
+  padding-bottom:5px;
 }
 .nav-menu {
   position: absolute;
@@ -754,12 +756,11 @@ a {
 }
 .toolbar-top-button {
   display: inline-block;
-  width: 49.33%;
-  padding-top: 22px;
-  padding-bottom: 9px;
+  width: 20.33%;
+  padding: 10px;
   border-bottom: 3px solid white;
   background-color: white;
-  font-size: 10px;
+  font-size: 30px;
   text-align: center;
   text-decoration: none;
 }
@@ -1360,7 +1361,7 @@ a {
 }
 .event-text {
   display: inline-block;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
   float: left;
   color: #a3a3a3;
   font-size: 12px;
@@ -1655,3 +1656,17 @@ input[type=text]:focus, textarea:focus {
     height: 40px;
     padding: 4px;
     width: 40px;}
+	
+.profile-icon { border: 1px solid;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-right: 4px;
+    margin-top: 5px;
+    padding: 3px;
+    position: relative;
+    text-align: center;
+    width: 35px; height:35px; }
+#meeting-view .toolbar-top-button{width:18.33% !important;}

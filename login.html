@@ -53,6 +53,9 @@
         families: ["Montserrat:400,700"]
       }
     });
+	$('input, textarea, button, select').off('touchstart mousedown').on('touchstart mousedown', function(e) {
+    e.stopPropagation();
+});
   </script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <script type="text/javascript" src="js/jquery.min.js"></script>
