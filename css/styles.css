@@ -1669,4 +1669,4 @@ input[type=text]:focus, textarea:focus {
     position: relative;
     text-align: center;
     width: 35px; height:35px; }
-#meeting-view .toolbar-top-button{width:18.33% !important;}
+#tab-meeting .toolbar-top-button{width:18.33% !important;}
