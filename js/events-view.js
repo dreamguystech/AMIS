@@ -26,8 +26,9 @@ $(document).ready(function(e) {
 				}
 			}
 			  $('.w-tab-pane[data-w-tab="Tab 2"]').empty().css('display','block').append(chartimg).css('opacity',0);  
-			  $('.w-tab-pane[data-w-tab="Tab 2"] img').pinchzoomer();  
-			  $('.w-tab-pane[data-w-tab="Tab 4"]').empty().append(data.edocs);       
+			  $('.w-tab-pane[data-w-tab="Tab 2"] img').pinchzoomer(); 
+			  $('.w-tab-pane[data-w-tab="Tab 4"]').empty().append('<div class="separator-bottom"></div>'+data.task);
+			  $('.w-tab-pane[data-w-tab="Tab 5"]').empty().append(data.edocs);       
         }
     });
 	
@@ -63,7 +64,7 @@ function loadmeetings(){
     });	
 }
 
-$(document).on('click','.w-tab-link[data-w-tab="Tab 3"]',function(){
+$(document).on('click','.w-tab-link[data-w-tab]',function(){
 	if($(this).attr('data-w-tab') == "Tab 2")
 	$('.w-tab-pane[data-w-tab="Tab 2"]').css('display','block');
 	else
@@ -100,5 +101,5 @@ $(document).on('click','a[data-mid]',function(){
 
 $(document).on('click','.meeting_list a',function(){
 	$(this).parent().parent().hide();
-	$(this).parent().parent().prev('div').show();
+	$(this).parent().parent().parent().find('div.text-new').show();
 });
