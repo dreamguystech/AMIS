@@ -169,7 +169,7 @@ function _notify() {
 
 // handle GCM notifications for Android
 function onNotification(e) {
-	alert(e.regid);
+	alert(); alert(e.regid);
     switch( e.event )
     {
         case 'registered':
