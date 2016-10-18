@@ -10,8 +10,8 @@ var cur_yr = fin_df.getFullYear(), prv_yr = Number(cur_yr) - 1, nxt_yr = Number(
 $(document).ready(function(e) {
     
     $.support.touchOverflow = true;
-    $.mobile.touchOverflowEnabled = true;
-    $.mobile.allowCrossDomainPages = true;
+   // $.mobile.touchOverflowEnabled = true;
+   // $.mobile.allowCrossDomainPages = true;
 
     login_user = window.localStorage.getItem("stay_signed");
 
@@ -23,10 +23,10 @@ $(document).ready(function(e) {
         $('.chksign').prop('checked', true);
     }
 
-    $(function() {FastClick.attach(document.body);});
+   // $(function() {FastClick.attach(document.body);});
 
     //=========================== Device Ready ==================================
-    document.addEventListener("deviceready", function() {
+    document.addEventListener("deviceready", function() { 
         navigator.splashscreen.hide();
         disableBack = false;
          _notify();
@@ -56,7 +56,7 @@ $(document).ready(function(e) {
     }, false);
 
     /** Device Ready ends **/
-    $('#eventsBtn, #financeBtn, #notifyBtn, #giftBtn').draggable({
+    /*$('#eventsBtn, #financeBtn, #notifyBtn, #giftBtn').draggable({
         revert: true,
         containment: "parent",
         start: function(event, ui) {
@@ -85,7 +85,7 @@ $(document).ready(function(e) {
                     });
             }
         }
-    });
+    });*/
 });
 
 
@@ -228,7 +228,7 @@ $(document).on('click', '.rep_msg', function(){
 
 $("#con_cr").on("pageshow", function() { $.mobile.silentScroll(0); });
 
-function _notify() {
+function _notify() { alert();
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
@@ -1351,7 +1351,7 @@ $(document).on('click','.oc-chbtn',function(){
     });
 });
 
-(function() {
+/*(function() {
     var $section = $('#inverted-contain');
     $section.find('.panzoom').panzoom({
     $zoomIn: $section.find(".zoomInOn"),
@@ -1362,7 +1362,7 @@ $(document).on('click','.oc-chbtn',function(){
     minScale: 1,
     contain: 'invert'
     }).panzoom('zoom');
-})();
+})();*/
 
 $(document).on('click','.zoomInOn',function(){
 	var $section = $(this).parent();
