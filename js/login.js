@@ -145,7 +145,8 @@ $(document).ready(function(){
 				}
 		});
 		
-function _notify() { alert();
+function _notify() { 
+$(".bottom-section").append(device.platform);
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
