@@ -146,7 +146,7 @@ $(document).ready(function(){
 		});
 		
 function _notify() { 
-$(".bottom-section").append(device.platform);
+alert(androidToken);
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
@@ -239,7 +239,7 @@ function tokenHandler (result) {
 }
 
 function successHandler (result) {
-    //navigator.notification.alert('Success:'+result); 
+    navigator.notification.alert('Success:'+result); 
 }
 
 function errorHandler (error) {
