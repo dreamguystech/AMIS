@@ -1,95 +1,158 @@
-$.support.cors = true;
-var category, first_name, middle_name, surname, member_code, member_region, member_area,
-user_id, member_id, profImg_url, region, majlis, latitude, longitude, arr = [], pushNotification, androidToken,
- iosToken;
-var ula_field = ["s_time", "e_all", "e_nat", "e_reg", "e_maj", "e_inv", "a_att", "p_att", "budget", "promise", "statement", "statistics", "mail_new", "mail_box", "mc_con", "mc_chq", "mc_mem", "mc_org", "mc_pos", "mc_sms", "tc_create", "tc_draft", "tc_history"];
-//get year
-var fin_df = new Date();
-var cur_yr = fin_df.getFullYear(), prv_yr = Number(cur_yr) - 1, nxt_yr = Number(cur_yr) + 1;
-
-$(document).ready(function(e) {
-    
-    $.support.touchOverflow = true;
-   // $.mobile.touchOverflowEnabled = true;
-   // $.mobile.allowCrossDomainPages = true;
-
-    login_user = window.localStorage.getItem("stay_signed");
-
-    androidToken = window.localStorage.getItem("androidToken");
+var pushNotification, androidToken, iosToken;
+$(document).ready(function(e){
+	var email    = $("#email");
+	var password = $("#password");
+	
+	androidToken = window.localStorage.getItem("androidToken");
     iosToken = window.localStorage.getItem("iosToken");
-
-    if (login_user) {
-        $('#user_name').val(login_user);
-        $('.chksign').prop('checked', true);
-    }
-
-   // $(function() {FastClick.attach(document.body);});
-
-    //=========================== Device Ready ==================================
-    document.addEventListener("deviceready", function() { 
-        navigator.splashscreen.hide();
-        disableBack = false;
-         _notify();
-        document.addEventListener("backbutton", function() {
-            if ($.mobile.activePage == "loginform") {
-                navigator.app.exitApp();
-            }
-            if (disableBack == false) {
-                var prevPage = $.mobile.activePage.attr('data-prev');
-                if (prevPage) {
-                    if (prevPage == "loginform") {
-                         navigator.notification.confirm("Do you wan't to exit from AMIS?",onConfirm,'Exit','Ok,Cancel');
+	document.addEventListener("deviceready", function() { 
+	_notify();
+	}, false);
+	email.blur(validateEmailUsername);	
+	password.blur(validateLpassword);
+	email.keyup(validateEmailUsername);
+	password.keyup(validateLpassword);
+		$('#login-form').submit(function(){ 
+				if(validateEmailUsername() & validateLpassword() )
+				{
+        androidToken = window.localStorage.getItem("androidToken");
+        iosToken = window.localStorage.getItem("iosToken");
+        var dataString ="uname="+$("#email").val()+"&pass="+$("#password").val()+"&android="+androidToken+"&ios="+iosToken;
+        $.ajax({
+            url:"http://amisapp.ansarullah.co.uk/mobile_app/login",
+            type:"POST",
+            data:dataString,
+            dataType:"json",
+            beforeSend:function(){
+                $(".loading-mask").css('opacity','0.5');
+               // disableBack = true;
+            },
+            success:function(data){
+               // disableBack = false;
+				$(".loading-mask").css('opacity','0');
+                if(data.res==1){
+                   /* if ($('.chksign').is(":checked")){
+                        window.localStorage.setItem("stay_signed", email);
                     }else{
-                        $.mobile.changePage("#"+prevPage,{
-                            allowSamePageTransition:true,
-                            reloadPage:false,
-                            changeHash:true,
-                            transition:"none",
-                            reverse: true
-                        });
-                    }
+                        window.localStorage.removeItem('stay_signed');
+                    }*/
+                    //set item
+					var pro_img = '<img src="http://amisapp.ansarullah.co.uk/images/member/'+data.det.prof_img+'" />';
+					if(data.det.prof_img == "user.png")
+					var pro_img  = '<i class="navbar-button-icon icon ion-ios-person-outline" style="font-size: 30px; height: 35px; width: 35px; display: inline;"></i>';
+                    window.localStorage.setItem("member_id", data.det.m_id);
+                    window.localStorage.setItem("user_id", data.det.u_id);
+                    window.localStorage.setItem("first_name", data.det.fname);
+                    window.localStorage.setItem("middle_name", data.det.mid_name);
+                    window.localStorage.setItem("surname", data.det.surname);
+                    window.localStorage.setItem("member_code", data.det.m_code);
+                    window.localStorage.setItem("region", data.det.region);
+                    window.localStorage.setItem("area", data.det.area);
+                    window.localStorage.setItem("prof_img", pro_img);
+                    window.localStorage.setItem("latitude", data.det.latitude);
+                    window.localStorage.setItem("longitude", data.det.longitude);
+
+                    //get item
+                    user_id = window.localStorage.getItem("user_id");
+                    member_id = window.localStorage.getItem("member_id");
+                    member_code = window.localStorage.getItem("member_code");
+                    first_name = window.localStorage.getItem("first_name");
+                    middle_name = window.localStorage.getItem("middle_name");
+                    surname = window.localStorage.getItem("surname");
+                    member_region = window.localStorage.getItem("region");
+                    member_area = window.localStorage.getItem("area");
+                    profImg_url = window.localStorage.getItem("prof_img");
+                    latitude = window.localStorage.getItem("latitude");
+                    longitude = window.localStorage.getItem("longitude");
+                   
+                    location.href = "home.html";
+                   
                 }else{
-                    navigator.notification.confirm("Do you wan't to exit from AMIS?",onConfirm,'Exit','Ok,Cancel');
+					$('#password').addClass("error");
+					$('#email').addClass("error");	
+                    setTimeout(function(){$('.ajaxOverlay').hide();$('.login_err').html(data.det);}, 2000);
+                    window.localStorage.clear();
                 }
             }
-        }, false);
-    }, false);
+        });
+    
+					
+					
+				}
+				return false;
+		});
+		
+		function validateEmailUsername()
+		{
+			var a = $("#email").val();
+			var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+			if(a == "")
+			{
+				$('#email').addClass("error");
+				return false;
+			}else
+			{
+				if(filter.test(a)){
+					$("#email").removeClass("error");
+					return true;
+				}
+				else{
+					$('#email').addClass("error");
+					return false;
+				}
+			}
+		}
+		
+		function validateLpassword(){
+			var password  = $('#password').val();
+			if(password == '')
+			{
+				$('#password').addClass("error");				
+				return false;
+			}else
+			{
+				$('#password').removeClass("error");
+				return true;
+			}
+		}
+		
+		var forgotpw = $('#forgotpw');	
+		
+		forgotpw.submit(function(){			
+				if(validateEmailfp())
+				{
+					$("#fpload").show();
+					$("#fpfooter").hide();
+					$.post(base_url+'forgot_password', 
+                        { useremail:$("#fpemail").val() },
+                        function(data){	
+							$("#fpload").hide();
+							if(data.success == "success")
+							{								
+								$("#fpfooter").after('Check your email to reset your password');
+							}else
+							{
+								$('#fpemail').addClass("error");	
+								$("#fpfooter").show();
+							}
+                        }, 
+                        "json"
+                    );
+					return false;
+				}
+				else
+				{
+				return false;
+				}
+		});
+		
 
-    /** Device Ready ends **/
-    /*$('#eventsBtn, #financeBtn, #notifyBtn, #giftBtn').draggable({
-        revert: true,
-        containment: "parent",
-        start: function(event, ui) {
-            var droppedID = $(this).attr('data-value');
-            category = droppedID;
-        }
-    });
-
-    $('.drophere').droppable({
-        drop: function() {
-            if (category==1) {
-                    $.mobile.changePage("#finance", {
-                        transition: "none"
-                    });
-            }else if(category==2){
-                    $.mobile.changePage("#events", {
-                        transition: "none"
-                    });
-            }else if(category==3){
-                    $.mobile.changePage("#notify", {
-                        transition: "none"
-                    });
-            }else if(category==4){
-                    $.mobile.changePage("#profile", {
-                        transition: "none"
-                    });
-            }
-        }
-    });*/
+		
 });
 
 
 function _notify() { 
+
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
@@ -105,13 +168,14 @@ function _notify() {
     }catch(err) { 
         txt="There was an error on this page.\n\n"; 
         txt+="Error description: " + err.message + "\n\n"; 
-        navigator.notification.alert(txt); 
+        //navigator.notification.alert(txt);
+		$(".bottom-section").append(txt);
     } 
 }
 
 // handle GCM notifications for Android
 function onNotification(e) {
-
+	alert(); alert(e.regid);
     switch( e.event )
     {
         case 'registered':
@@ -175,6 +239,7 @@ function onNotificationAPN(e) {
 
 function tokenHandler (result) {
     window.localStorage.setItem("iosToken", result);
+	$(".bottom-section").append(window.localStorage.getItem("iosToken"));
     //navigator.notification.alert('Token: '+result); 
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
@@ -187,5 +252,3 @@ function successHandler (result) {
 function errorHandler (error) {
     navigator.notification.alert('Device registertaion failed: '+error); 
 }
-
-
