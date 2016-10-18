@@ -146,7 +146,7 @@ $(document).ready(function(){
 		});
 		
 function _notify() { 
-alert(androidToken);
+
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
@@ -169,6 +169,7 @@ alert(androidToken);
 
 // handle GCM notifications for Android
 function onNotification(e) {
+	alert(e.regid);
     switch( e.event )
     {
         case 'registered':
@@ -239,7 +240,7 @@ function tokenHandler (result) {
 }
 
 function successHandler (result) {
-    navigator.notification.alert('Success:'+result); 
+    //navigator.notification.alert('Success:'+result); 
 }
 
 function errorHandler (error) {
