@@ -1077,8 +1077,8 @@ a {
   font-size: 14px;
 }
 .list-message {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #e7e7e9;
 }
 .list-message:active {
@@ -1670,3 +1670,4 @@ input[type=text]:focus, textarea:focus {
     text-align: center;
     width: 35px; height:35px; }
 #tab-meeting .toolbar-top-button{width:18.33% !important;}
+.profile-icon img{width:23px;}
