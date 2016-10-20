@@ -19,7 +19,7 @@ $(document).ready(function(e){
         iosToken = window.localStorage.getItem("iosToken");
         var dataString ="uname="+$("#email").val()+"&pass="+$("#password").val()+"&android="+androidToken+"&ios="+iosToken;
         $.ajax({
-            url:"http://amisapp.ansarullah.co.uk/mobile_app/login",
+            url:"http://amisapp.ansarullah.co.uk/mobile_newapp/login",
             type:"POST",
             data:dataString,
             dataType:"json",
@@ -157,7 +157,7 @@ function _notify() {
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
             if(!androidToken){
-                pushNotification.register(successHandler, errorHandler, {"senderID":"146808","ecb":"onNotification"});        // required!
+                pushNotification.register(successHandler, errorHandler, {"senderID":"821939182782","ecb":"onNotification"});        // required!
             }
 
         } else {
@@ -175,7 +175,7 @@ function _notify() {
 
 // handle GCM notifications for Android
 function onNotification(e) {
-	alert(); alert(e.regid);
+	
     switch( e.event )
     {
         case 'registered':
@@ -184,7 +184,7 @@ function onNotification(e) {
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
             window.localStorage.setItem("androidToken", e.regid);
-			$(".bottom-section").append(window.localStorage.getItem("androidToken"));
+			
         }
         break;
         
@@ -239,7 +239,7 @@ function onNotificationAPN(e) {
 
 function tokenHandler (result) {
     window.localStorage.setItem("iosToken", result);
-	$(".bottom-section").append(window.localStorage.getItem("iosToken"));
+	
     //navigator.notification.alert('Token: '+result); 
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
