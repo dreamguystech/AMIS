@@ -157,7 +157,7 @@ function _notify() {
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
             if(!androidToken){
-                pushNotification.register(successHandler, errorHandler, {"senderID":"325344179118","ecb":"onNotification"});        // required!
+                pushNotification.register(successHandler, errorHandler, {"senderID":"146808","ecb":"onNotification"});        // required!
             }
 
         } else {
