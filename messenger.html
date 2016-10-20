@@ -42,6 +42,18 @@
               </div>
               <div class="nav-menu-titles">Notification</div>
             </a>
+             <a class="w-clearfix w-inline-block nav-menu-link" href="finance.html" data-load="1">
+              <div class="icon-list-menu">
+                <div class="icon ion-ios-briefcase-outline"></div>
+              </div>
+              <div class="nav-menu-titles">Finance</div>
+            </a>
+            <a class="w-clearfix w-inline-block nav-menu-link" href="messenger.html" data-load="1">
+              <div class="icon-list-menu">
+                <div class="icon ion-ios-chatboxes-outline"></div>
+              </div>
+              <div class="nav-menu-titles">Messenger</div>
+            </a>
             <div class="separator-bottom"></div>
             <div class="separator-bottom"></div>
             <div class="separator-bottom"></div>
@@ -55,13 +67,113 @@
               <div class="bar-home-icon bottom"></div>
             </div>
           </div>
+          
+         <div class="left" id="chatin" style="display: none;position:absolute;">
+          	<a style="float: left;" class="w-inline-block small-button icon-only grey" href="#">
+            				<div class="icon ion-ios-arrow-left bigger icon-button"></div></a>
+          </div>
            <a href="profile.html" class="profile-icon">
            
           </a>
         </div>
       </div>
       <div class="body">
+      	<ul class="list list-messages">
         
+        </ul>
+        <ul class="list list-chats" style="display:none;">
+          <li class="w-clearfix list-chat" data-ix="list-item">
+            <div class="column-left chat">
+              <div class="image-message chat"><img src="images/placeholder.png">
+              </div>
+            </div>
+            <div class="w-clearfix column-right chat">
+              <div class="arrow-globe"></div>
+              <div class="chat-text">Wow!&nbsp;</div>
+              <div class="chat-time">3 mins ago</div>
+            </div>
+          </li>
+          <li class="list-chat right" data-ix="list-item">
+            <div class="w-clearfix column-right chat right">
+              <div class="arrow-globe right"></div>
+              <div class="chat-text right">These speech bubbles are
+                <br> awesome!
+              </div>
+              <div class="chat-time right">3 min ago</div>
+            </div>
+          </li>
+          <li class="w-clearfix list-chat" data-ix="list-item">
+            <div class="column-left chat">
+              <div class="image-message chat"><img src="images/placeholder.png">
+              </div>
+            </div>
+            <div class="w-clearfix column-right chat">
+              <div class="arrow-globe"></div>
+              <div class="chat-text">I know, right? And so is this template...</div>
+              <div class="chat-time">1 min ago</div>
+            </div>
+          </li>
+          <li class="list-chat right" data-ix="list-item">
+            <div class="w-clearfix column-right chat right">
+              <div class="arrow-globe right"></div>
+              <div class="chat-text right">Yes, they are and they are
+                <br>really easy to use as well.</div>
+              <div class="chat-time right">50 sec ago</div>
+            </div>
+          </li>
+          <li class="w-clearfix list-chat" data-ix="list-item">
+            <div class="column-left chat">
+              <div class="image-message chat"><img src="images/placeholder.png">
+              </div>
+            </div>
+            <div class="w-clearfix column-right chat">
+              <div class="arrow-globe"></div>
+              <div class="chat-text">Yeah, it’s awesome.</div>
+              <div class="chat-time">30 sec ago</div>
+            </div>
+          </li>
+          <li class="list-chat right" data-ix="list-item">
+            <div class="w-clearfix column-right chat right">
+              <div class="arrow-globe right"></div>
+              <div class="chat-text right">Great design</div>
+              <div class="chat-time right">20 sec ago</div>
+            </div>
+          </li>
+          <li class="list-chat right" data-ix="list-item">
+            <div class="w-clearfix column-right chat right">
+              <div class="arrow-globe right"></div>
+              <div class="chat-text right">I bet it has a clean code as well!...</div>
+              <div class="chat-time right">15 sec ago</div>
+            </div>
+          </li>
+          <li class="w-clearfix list-chat" data-ix="list-item">
+            <div class="column-left chat">
+              <div class="image-message chat"><img src="images/placeholder.png">
+              </div>
+            </div>
+            <div class="w-clearfix column-right chat">
+              <div class="arrow-globe"></div>
+              <div class="chat-text">I'm pretty sure it does. I heard customer support is great!</div>
+              <div class="chat-time">7 sec ago</div>
+            </div>
+          </li>
+          <li class="list-chat right" data-ix="list-item">
+            <div class="w-clearfix column-right chat right">
+              <div class="arrow-globe right"></div>
+              <div class="chat-text right">Awesome!</div>
+              <div class="chat-time right">just now</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="input-chat-block" style="display:none;">
+        <div class="w-form">
+          <form class="w-clearfix" id="wf-form-Send" name="wf-form-Send" action="#">
+            <input class="w-input input-chat" id="chat-message" type="text" placeholder="Your message" name="email" data-name="Email" required>
+            <input class="w-button chat-button" type="submit" value="Send" data-wait="Please wait...">
+          </form>
+         
+        </div>
       </div>
     </div>
     <div class="page-content loading-mask" id="new-stack">
@@ -83,7 +195,7 @@
   <script type="text/javascript" src="js/framework.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
   <script type="text/javascript" src="js/prayTime.js"></script>
-  <script type="text/javascript" src="js/home.js"></script>
+  <script type="text/javascript" src="js/messenger.js"></script>
   <script>
   //alert(window.localStorage.getItem("user_id"));
   </script>
