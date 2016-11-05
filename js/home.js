@@ -32,18 +32,18 @@ $(document).ready(function(e) {
                 
     for(var i = 0; i < 6; i++) {
         
-        str += '<div class="w-row list-message"><div class="w-col w-col-5 w-col-small-5 w-col-tiny-5 n-p-l"><div class="message-title">'+ prayTime.timeNames[i]+ '</div></div>';
+        str += '<div class="w-row list-message"><div class="w-col w-col-tiny-5"><div class="message-title">'+ prayTime.timeNames[i]+ '</div></div>';
         if (i == 0) {
             if(latitude){
                 times[0] = newFajr;
             }
             msq_times[0] = msq_newFajr;
         }
-            str += '<div class="w-col w-col-3 w-col-small-3 w-col-tiny-3"><div class="message-title">'+ msq_times[i]+ '</div></div>';
+            str += '<div class="w-col w-col-tiny-3"><div class="message-title">'+ msq_times[i]+ '</div></div>';
         if(latitude){
-            str += '<div class="w-col w-col-3 w-col-small-3 w-col-tiny-3"><div class="message-title">'+ times[i]+ '</div></div></div>';
+            str += '<div class="w-col w-col-tiny-3"><div class="message-title">'+ times[i]+ '</div></div></div>';
         }else{
-            str += '<div class="w-col w-col-3 w-col-small-3 w-col-tiny-3"><div class="message-title">0:00</div></div></div>';
+            str += '<div class="w-col w-col-tiny-3"><div class="message-title">0:00</div></div></div>';
         }
     }
 	$(".salat-times").append(str);
