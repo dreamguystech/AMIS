@@ -152,11 +152,11 @@ $(document).ready(function(e){
 
 
 function _notify() { 
-
+alert(123);
 //function onDeviceReady(){
  var push = PushNotification.init({ "android": {"senderID": "821939182782"}});
- push.on('registration', function(data) {
- //console.log(data.registrationId);
+ push.on('registration', function(data) { alert(432);
+ //console.log(data.registrationId); 
  //document.getElementById("gcm_id").innerHTML = data.registrationId;
  if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
  window.localStorage.setItem("androidToken", data.registrationId);
