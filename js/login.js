@@ -2,11 +2,7 @@ var pushNotification, androidToken, iosToken;
 $(document).ready(function(e){
 	var email    = $("#email");
 	var password = $("#password");
-<<<<<<< HEAD
-	var pushNotification;
-=======
 	
->>>>>>> origin/master
 	androidToken = window.localStorage.getItem("androidToken");
     iosToken = window.localStorage.getItem("iosToken");
 	document.addEventListener("deviceready", function() { 
@@ -157,7 +153,28 @@ $(document).ready(function(e){
 
 function _notify() { 
 
-    try { 
+function onDeviceReady(){
+ var push = PushNotification.init({ "android": {"senderID": "821939182782"}});
+ push.on('registration', function(data) {
+ //console.log(data.registrationId);
+ //document.getElementById("gcm_id").innerHTML = data.registrationId;
+ if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
+ window.localStorage.setItem("androidToken", data.registrationId);
+ else
+ window.localStorage.setItem("iosToken", data.registrationId);
+ $(".bottom-section").append(data.registrationId);
+ });
+
+ push.on('notification', function(data) {
+ alert(data.title+" Message: " +data.message);
+ });
+
+ push.on('error', function(e) {
+ alert(e);
+ });
+}
+
+   /* try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
             if(!androidToken){
@@ -174,7 +191,7 @@ function _notify() {
         txt+="Error description: " + err.message + "\n\n"; 
         //navigator.notification.alert(txt);
 		$(".bottom-section").append(txt);
-    } 
+    } */
 }
 
 // handle GCM notifications for Android
