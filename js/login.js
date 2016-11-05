@@ -153,7 +153,7 @@ $(document).ready(function(e){
 
 function _notify() { 
 
-function onDeviceReady(){
+//function onDeviceReady(){
  var push = PushNotification.init({ "android": {"senderID": "821939182782"}});
  push.on('registration', function(data) {
  //console.log(data.registrationId);
@@ -172,7 +172,7 @@ function onDeviceReady(){
  push.on('error', function(e) {
  alert(e);
  });
-}
+//}
 
    /* try { 
         pushNotification = window.plugins.pushNotification;
