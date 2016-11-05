@@ -1,4 +1,5 @@
-$(document).ready(function(){
+var pushNotification, androidToken, iosToken;
+$(document).ready(function(e){
 	var email    = $("#email");
 	var password = $("#password");
 <<<<<<< HEAD
@@ -8,7 +9,9 @@ $(document).ready(function(){
 >>>>>>> origin/master
 	androidToken = window.localStorage.getItem("androidToken");
     iosToken = window.localStorage.getItem("iosToken");
+	document.addEventListener("deviceready", function() { 
 	_notify();
+	}, false);
 	email.blur(validateEmailUsername);	
 	password.blur(validateLpassword);
 	email.keyup(validateEmailUsername);
@@ -20,7 +23,7 @@ $(document).ready(function(){
         iosToken = window.localStorage.getItem("iosToken");
         var dataString ="uname="+$("#email").val()+"&pass="+$("#password").val()+"&android="+androidToken+"&ios="+iosToken;
         $.ajax({
-            url:"http://amisapp.ansarullah.co.uk/mobile_app/login",
+            url:"http://amisapp.ansarullah.co.uk/mobile_newapp/login",
             type:"POST",
             data:dataString,
             dataType:"json",
@@ -147,12 +150,18 @@ $(document).ready(function(){
 				}
 		});
 		
-function _notify() {
+
+		
+});
+
+
+function _notify() { 
+
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
             if(!androidToken){
-                pushNotification.register(successHandler, errorHandler, {"senderID":"325344179118","ecb":"onNotification"});        // required!
+                pushNotification.register(successHandler, errorHandler, {"senderID":"821939182782","ecb":"onNotification"});        // required!
             }
 
         } else {
@@ -170,6 +179,7 @@ function _notify() {
 
 // handle GCM notifications for Android
 function onNotification(e) {
+	
     switch( e.event )
     {
         case 'registered':
@@ -178,7 +188,7 @@ function onNotification(e) {
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
             window.localStorage.setItem("androidToken", e.regid);
-			$(".bottom-section").append(window.localStorage.getItem("androidToken"));
+			
         }
         break;
         
@@ -233,7 +243,7 @@ function onNotificationAPN(e) {
 
 function tokenHandler (result) {
     window.localStorage.setItem("iosToken", result);
-	$(".bottom-section").append(window.localStorage.getItem("iosToken"));
+	
     //navigator.notification.alert('Token: '+result); 
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
@@ -246,5 +256,3 @@ function successHandler (result) {
 function errorHandler (error) {
     navigator.notification.alert('Device registertaion failed: '+error); 
 }
-		
-});
