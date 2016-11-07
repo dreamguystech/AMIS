@@ -41,9 +41,9 @@
     <plugin name="org.apache.cordova.dialogs" source="pgb" />
     <plugin name="org.apache.cordova.splashscreen" source="pgb" />
     <plugin name="org.apache.cordova.media" source="pgb" />    
-    <plugin name="cordova-plugin-device" source="pgb" />
+    <!--<plugin name="cordova-plugin-device" source="pgb" />
     <plugin name="cordova-plugin-file" source="pgb" />
-    <plugin name="cordova-plugin-file-transfer" source="pgb" />
+    <plugin name="cordova-plugin-file-transfer" source="pgb" />-->
 
     <icon src="res/icon/ios/classic.png" gap:platform="ios" width="57" height="57" />
     <icon src="res/icon/ios/ipad.png" gap:platform="ios" width="72" height="72" />
