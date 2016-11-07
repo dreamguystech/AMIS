@@ -156,12 +156,14 @@ function _notify() {
     try { 
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
-            if(!androidToken){
+            //if(!androidToken)
+			{
                 pushNotification.register(successHandler, errorHandler, {"senderID":"821939182782","ecb":"onNotification"});        // required!
             }
 
         } else {
-            if(!iosToken){
+           // if(!iosToken)
+			{
                 pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});    // required!
             }
         }
@@ -175,7 +177,7 @@ function _notify() {
 
 // handle GCM notifications for Android
 function onNotification(e) {
-	
+	alert();
     switch( e.event )
     {
         case 'registered':
